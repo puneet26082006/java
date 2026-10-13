@@ -13,6 +13,11 @@ public class Main {
 
         while (true) {
             System.out.print("SQL> ");
+            if (!scanner.hasNextLine()) {
+                db.saveToDisk();
+                System.out.println("Goodbye.");
+                break;
+            }
             String input = scanner.nextLine().trim();
 
             if (input.equalsIgnoreCase("EXIT") || input.equalsIgnoreCase("QUIT")) {
