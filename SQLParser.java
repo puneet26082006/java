@@ -36,6 +36,11 @@ public class SQLParser {
         String tableName = query.substring(query.indexOf("TABLE") + 6, query.indexOf("(")).trim();
         String columnsPart = query.substring(query.indexOf("(") + 1, query.indexOf(")"));
         
+        if (db.tables.containsKey(tableName)) {
+            System.out.println("Error: Table '" + tableName + "' already exists.");
+            return;
+        }
+
         Table table = new Table(tableName);
         String[] columns = columnsPart.split(",");
         
